@@ -13,7 +13,6 @@ function fetchWeatherData() {
 
     showLoadingSpinner(true);
     
-    // Clear error message and previous weather info before fetching new data
     document.getElementById('error-message').innerText = '';
     document.getElementById('weather-info').innerHTML = '';
     document.getElementById('forecast-info').innerHTML = '';
@@ -117,7 +116,17 @@ function updateBackgroundImage(condition) {
 function handleError(error) {
     const errorMessage = document.getElementById('error-message');
     errorMessage.innerText = `Error: ${error.message}`;
+    errorMessage.classList.remove('hidden');
+    errorMessage.classList.add('fade-in');
 }
+
+document.getElementById('search-btn').addEventListener('click', () => {
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.classList.remove('fade-in');
+    errorMessage.classList.add('hidden');
+    errorMessage.innerText = '';
+});
+
 
 function showLoadingSpinner(show) {
     const spinner = document.getElementById('loading-spinner');
