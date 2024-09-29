@@ -12,6 +12,11 @@ function fetchWeatherData() {
     const forecastUrl = `${baseUrl}forecast?q=${city}&units=${units}&lang=${lang}&appid=${apiKey}`;
 
     showLoadingSpinner(true);
+    
+    // Clear error message and previous weather info before fetching new data
+    document.getElementById('error-message').innerText = '';
+    document.getElementById('weather-info').innerHTML = '';
+    document.getElementById('forecast-info').innerHTML = '';
 
     fetch(weatherUrl)
         .then(response => response.json())
@@ -72,7 +77,6 @@ function displayForecast(data) {
     });
 }
 
-
 function updateBackgroundImage(condition) {
     const body = document.body;
     
@@ -90,59 +94,20 @@ function updateBackgroundImage(condition) {
             body.style.backgroundImage = "url('images/rainy.jpg')";
             break;
         case 'drizzle':
-        case 'light intensity drizzle':
-        case 'drizzle rain':
-        case 'heavy intensity drizzle':
-        case 'shower drizzle':
             body.style.backgroundImage = "url('images/drizzle.jpg')";
             break;
         case 'thunderstorm':
-        case 'thunderstorm with light rain':
-        case 'thunderstorm with rain':
-        case 'thunderstorm with heavy rain':
-        case 'light thunderstorm':
-        case 'heavy thunderstorm':
-        case 'ragged thunderstorm':
-        case 'thunderstorm with drizzle':
-        case 'thunderstorm with light drizzle':
-        case 'thunderstorm with heavy drizzle':
             body.style.backgroundImage = "url('images/thunderstorm.jpg')";
             break;
         case 'snow':
-        case 'light snow':
-        case 'heavy snow':
-        case 'sleet':
-        case 'light shower sleet':
-        case 'shower sleet':
-        case 'light rain and snow':
-        case 'rain and snow':
-        case 'light shower snow':
-        case 'shower snow':
-        case 'heavy shower snow':
             body.style.backgroundImage = "url('images/snow.jpg')";
             break;
         case 'clouds':
-        case 'few clouds':
-        case 'scattered clouds':
-        case 'broken clouds':
-        case 'overcast clouds':
             body.style.backgroundImage = "url('images/cloudy.jpg')";
             break;
         case 'mist':
-        case 'smoke':
-        case 'haze':
         case 'fog':
             body.style.backgroundImage = "url('images/fog.jpg')";
-            break;
-        case 'sand':
-        case 'dust':
-        case 'sand/dust whirls':
-        case 'volcanic ash':
-            body.style.backgroundImage = "url('images/sandstorm.jpg')";
-            break;
-        case 'squalls':
-        case 'tornado':
-            body.style.backgroundImage = "url('images/tornado.jpg')";
             break;
         default:
             body.style.backgroundImage = "url('images/default.jpg')";
