@@ -1,0 +1,54 @@
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('images/default.jpg'); transition: background-image 0.5s ease;">
+    <div class="container mx-auto p-4 md:p-6 lg:p-8 bg-white bg-opacity-25 rounded-lg shadow-lg">
+        <h1 class="text-5xl font-extrabold text-blue-800 mb-6">Weather App</h1>
+
+        <div class="flex flex-col md:flex-row justify-center mb-6">
+            <input type="text" id="city-input" placeholder="Enter city name" class="w-full md:w-3/4 p-3 border border-blue-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 font-bold text-lg text-gray-800 bg-gray-200">
+            <button id="search-btn" class="bg-blue-600 text-white px-5 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 font-bold text-lg">Search</button>
+        </div>
+        
+        <div class="current-weather mb-6">
+            <h2 class="text-3xl font-extrabold text-blue-800 mb-4">Current Weather</h2>
+            <div id="weather-info" class="text-xl text-gray-900 font-bold"></div>
+        </div>
+        
+        <div class="forecast mb-6">
+            <h2 class="text-3xl font-extrabold text-blue-800 mb-4">5-Day Forecast</h2>
+            <div id="forecast-info" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-gray-900 font-bold">
+            </div>
+        </div>
+
+        <div class="unit-toggle mb-4">
+            <label for="unit-toggle-switch" class="text-gray-900 font-bold text-lg">Unit: </label>
+            <select id="unit-toggle-switch" class="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-400 font-bold text-lg bg-gray-200 text-gray-800">
+                <option value="metric">Celsius</option>
+                <option value="imperial">Fahrenheit</option>
+            </select>
+        </div>
+        
+        <div class="language-toggle mb-4">
+            <label for="language-toggle-switch" class="text-gray-900 font-bold text-lg">Language: </label>
+            <select id="language-toggle-switch" class="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-400 font-bold text-lg bg-gray-200 text-gray-800">
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+            </select>
+        </div>
+
+        <div id="error-message" class="text-red-600 font-semibold text-center mb-4"></div>
+
+        <div id="loading-spinner" class="hidden w-8 h-8 border-4 border-blue-400 border-t-transparent border-solid rounded-full animate-spin mx-auto"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
