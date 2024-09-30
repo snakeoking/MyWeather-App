@@ -1,5 +1,11 @@
 document.getElementById('search-btn').addEventListener('click', fetchWeatherData);
 
+document.getElementById('city-input').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+        fetchWeatherData();
+    }
+});
+
 const apiKey = '0b60c38c7270dac596eb80a0b94a7495';
 const baseUrl = 'https://api.openweathermap.org/data/2.5/';
 
@@ -126,7 +132,6 @@ document.getElementById('search-btn').addEventListener('click', () => {
     errorMessage.classList.add('hidden');
     errorMessage.innerText = '';
 });
-
 
 function showLoadingSpinner(show) {
     const spinner = document.getElementById('loading-spinner');
