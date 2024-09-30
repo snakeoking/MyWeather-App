@@ -19,7 +19,11 @@ function fetchWeatherData() {
 
     showLoadingSpinner(true);
     
-    document.getElementById('error-message').innerText = '';
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.classList.remove('fade-in');
+    errorMessage.classList.add('hidden');
+    errorMessage.innerText = '';
+
     document.getElementById('weather-info').innerHTML = '';
     document.getElementById('forecast-info').innerHTML = '';
 
@@ -38,6 +42,7 @@ function fetchWeatherData() {
         .catch(handleError)
         .finally(() => showLoadingSpinner(false));
 }
+
 
 function displayCurrentWeather(data) {
     const weatherInfo = document.getElementById('weather-info');
@@ -68,7 +73,7 @@ function displayForecast(data) {
         if (index % 8 === 0 && index < 40) {
             const date = new Date(day.dt * 1000);
             const dayCard = `
-                <div class="bg-blue-100 p-4 rounded-lg shadow-md">
+                <div class="forecast-card">
                     <h3 class="font-bold text-lg">${date.toLocaleDateString()}</h3>
                     <p class="text-2xl font-bold">${day.main.temp}°</p>
                     <p>Humidity: ${day.main.humidity}%</p>
